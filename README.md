@@ -1,23 +1,35 @@
-# SQL-AI Metadata Bridge 🔗🤖
+# 🧠 SQL Semantic Search
+### Buscador Inteligente de Tablas con IA
 
-Este proyecto es el primer componente de un sistema **Text-to-SQL**. Permite extraer el esquema de una base de datos SQL Server y enriquecerlo semánticamente utilizando Inteligencia Artificial (Llama 3.1) para facilitar la interacción en lenguaje natural.
+Este proyecto utiliza **Inteligencia Artificial** y una **Base de Datos Vectorial (ChromaDB)** para encontrar tablas en una base de datos SQL Server mediante lenguaje natural. En lugar de buscar por palabras clave exactas, el sistema entiende el **contexto y la intención** detrás de la consulta.
+
+---
 
 ## 🚀 Características
-- **Extracción Automática:** Obtiene tablas, columnas y tipos de datos mediante `pyodbc`.
-- **Enriquecimiento Semántico:** Utiliza LLMs (vía Groq) para traducir nombres de tablas crípticos a conceptos de negocio.
-- **Formato Interoperable:** Genera un catálogo en JSON listo para ser consumido por aplicaciones .NET, Angular o Motores de Búsqueda Vectorial.
+
+* **Indexación Semántica:** Transforma descripciones técnicas en vectores de significado (embeddings).
+* **Búsqueda Natural:** Responde a preguntas como *"¿Dónde están los saldos de los usuarios?"* identificando la tabla técnica correcta.
+* **Eficiencia Local:** Basado en `ChromaDB`, lo que permite búsquedas instantáneas sin llamadas constantes a APIs externas.
+* **Modelo de Lenguaje:** Utiliza el modelo `all-MiniLM-L6-v2` para un procesamiento ligero y preciso.
+
+
+
+---
 
 ## 🛠️ Tecnologías
-- **Lenguaje:** Python 3.x
-- **DB:** SQL Server
-- **IA:** Groq Cloud (Llama 3.1 8b)
-- **Librerías:** `pyodbc`, `python-dotenv`, `groq`
 
-## 📋 Estructura del Proyecto
-- `extractor.py`: Conecta a SQL Server y genera `esquema_db.json`.
-- `enriquecedor.py`: Toma el esquema y genera `catalogo_semantico.json` con descripciones de IA.
-- `.env`: Configuración de credenciales (Server, DB, API Key).
+* **Lenguaje:** Python 3.10+
+* **IA:** ChromaDB & Sentence-Transformers.
+* **Formato de Datos:** JSON para el catálogo maestro.
 
-## ⏭️ Próximos Pasos
-- Implementación de **ChromaDB** para búsqueda semántica de tablas.
-- Integración con Backend .NET para generación dinámica de Queries SQL.
+---
+
+## 📂 Estructura del Proyecto
+
+```text
+├── db_vectorial/          # Base de datos vectorial (local)
+├── indexador.py           # Script para cargar/actualizar el catálogo
+├── consulta.py            # Interfaz de búsqueda interactiva
+├── catalogo_semantico.json # Diccionario de metadatos de SQL
+├── .gitignore             # Archivos excluidos de Git
+└── README.md              # Documentación
