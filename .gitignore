@@ -1,0 +1,19 @@
+# Base de datos vectorial (ChromaDB)
+db_vectorial/
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# Entornos virtuales (si usas uno)
+venv/
+.venv/
+
+# Archivos de configuración sensible
+.env
+catalogo_semantico.json
+esquema_db.json
+
+# Modelos descargados (si se guardaron en la carpeta del proyecto)
+*.onnx
+*.tar.gz
